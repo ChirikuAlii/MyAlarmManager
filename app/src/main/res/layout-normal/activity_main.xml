@@ -73,7 +73,7 @@
                 android:id="@+id/txt_time_alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:text="05:21"
                 tools:layout_editor_absoluteX="96dp"
                 tools:layout_editor_absoluteY="353dp" />
 
