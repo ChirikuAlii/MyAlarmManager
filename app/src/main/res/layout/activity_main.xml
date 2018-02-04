@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    tools:context="com.example.chiriku711.myalarmmanager.MainActivity">
+
+    <LinearLayout
+        android:layout_weight="1"
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="15dp"
+            android:text="TextView"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.049"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button3"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="39dp"
+                android:text="..."
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="324dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="96dp"
+                tools:layout_editor_absoluteY="353dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="39dp"
+                android:text="..."
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="324dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="96dp"
+                tools:layout_editor_absoluteY="353dp" />
+
+
+        </LinearLayout>
+
+        <EditText
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:id="@+id/editText2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pesan Alarm"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="387dp" />
+
+        <Button
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="set one time alaram"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="261dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <LinearLayout
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+
+                android:id="@+id/button2"
+                android:layout_width="50dp"
+                android:layout_height="39dp"
+                android:text="..."
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="324dp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="96dp"
+                tools:layout_editor_absoluteY="353dp" />
+
+
+        </LinearLayout>
+
+
+        <EditText
+
+            android:layout_marginBottom="@dimen/vertical_margin2"
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Pesan Alarm"
+            tools:layout_editor_absoluteX="24dp"
+            tools:layout_editor_absoluteY="191dp" />
+
+        <LinearLayout
+
+
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            tools:layout_editor_absoluteX="1dp"
+            tools:layout_editor_absoluteY="432dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:text="set repeating alarm" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="batalkan alarm" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</LinearLayout>
