@@ -32,13 +32,19 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        String type = intent.getStringExtra(EXTRA_TYPE);
+        String message = intent.getStringExtra(EXTRA_MESSAGE);
+        String title = type.equalsIgnoreCase(TYPE_ONE_TIME) ? "One Time Alarm" : "Repeating Alarm";
+        int notifId = type.equalsIgnoreCase(TYPE_ONE_TIME) ? NOTIF_ID_ONETIME : NOTIF_ID_REPEATING;
+        showAlarmNotification(context, title, message, notifId);
     }
 
-    public void setAlarmNotification (Context context , String Title , String Message , int notifId){
+    public void showAlarmNotification (Context context , String Title , String Message , int notifId){
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        android.support.v4.app.NotificationCompat.Builder builder = new android.support.v4.app.NotificationCompat.Builder(context,String.valueOf(notifId))
+
+
+        android.support.v7.app.NotificationCompat.Builder builder = (android.support.v7.app.NotificationCompat.Builder) new android.support.v7.app.NotificationCompat.Builder(context)
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                 .setContentTitle(Title)
                 .setContentText(Message)
@@ -63,7 +69,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(Calendar.YEAR,Integer.parseInt(dateArray[0]));
-        calendar.set(Calendar.MONTH,Integer.parseInt(dateArray[1]));
+        calendar.set(Calendar.MONTH,Integer.parseInt(dateArray[1])-1);
         calendar.set(Calendar.DAY_OF_MONTH,Integer.parseInt(dateArray[2]));
         calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(timeArray[0]));
         calendar.set(Calendar.MINUTE,Integer.parseInt(timeArray[1]));

@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         alarmReceiver = new AlarmReceiver();
 
 
-
+        if (!TextUtils.isEmpty(alarmPreference.getOneTimeDate())){
+            setOneTimeText();
+        }
     }
 
 
@@ -97,24 +99,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
 
-            if (v.getId() == R.id.btn_one_time_time_alarm){
-                final Calendar currentTime = Calendar.getInstance();
-
-                new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        calOneTimeTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                        calOneTimeTime.set(Calendar.MINUTE,minute);
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
-                        txtOneTimeTime.setText(dateFormat.format(calOneTimeTime.getTime()));
-                    }
-                },currentTime.get(Calendar.HOUR_OF_DAY),currentTime.get(Calendar.MINUTE),true).show();
-            }
-
-
-
-
-
         }
+
+        if (v.getId() == R.id.btn_one_time_time_alarm){
+            final Calendar currentTime = Calendar.getInstance();
+
+            new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    calOneTimeTime.set(Calendar.HOUR_OF_DAY,hourOfDay);
+                    calOneTimeTime.set(Calendar.MINUTE,minute);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+                    txtOneTimeTime.setText(dateFormat.format(calOneTimeTime.getTime()));
+                }
+            },currentTime.get(Calendar.HOUR_OF_DAY),currentTime.get(Calendar.MINUTE),true).show();
+        }
+
+        if (v.getId() == R.id.btn_one_time_alarm){
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String oneTimeDate = dateFormat.format(calOneTimeDate.getTime());
+
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+
+            String oneTimeTime = timeFormat.format(calOneTimeTime.getTime());
+
+            String oneTimeMessage = edtOneTimeMessage.getText().toString();
+
+            alarmPreference.setOneTimeDate(oneTimeDate);
+            alarmPreference.setOneTimeTime(oneTimeTime);
+            alarmPreference.setOneTimeMessage(oneTimeMessage);
+
+            alarmReceiver.setOneTimeAlarm(this,AlarmReceiver.TYPE_ONE_TIME,
+                    alarmPreference.getOneTimeDate(),
+                    alarmPreference.getOneTimeTime(),
+                    alarmPreference.getOneTimeMessage());
+        }
+
+
+    }
+    private void setOneTimeText () {
+        txtOneTimeTime.setText(alarmPreference.getOneTimeTime());
+        txtOneTimeDate.setText(alarmPreference.getOneTimeDate());
+        edtOneTimeMessage.setText(alarmPreference.getOneTimeMessage());
     }
 }

@@ -24,6 +24,8 @@ public class AlarmPreference {
 
     public AlarmPreference(Context context) {
         mSharedPreferences = context.getSharedPreferences(PREF_NAME,Context.MODE_PRIVATE);
+        editor = mSharedPreferences.edit();
+
     }
 
 
