@@ -71,6 +71,7 @@ public class AlarmPreference {
 
     public void setRepeatMessage(String Message) {
         editor.putString(KEY_REPEAT_MESSAGE,Message);
+        editor.commit();
     }
 
     public  void clear(){

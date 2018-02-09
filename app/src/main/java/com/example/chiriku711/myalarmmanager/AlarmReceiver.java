@@ -39,12 +39,13 @@ public class AlarmReceiver extends BroadcastReceiver {
         showAlarmNotification(context, title, message, notifId);
     }
 
-    public void showAlarmNotification (Context context , String Title , String Message , int notifId){
+    public void showAlarmNotification (Context context , String Title , String Message , Integer notifId){
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
 
-        android.support.v7.app.NotificationCompat.Builder builder = (android.support.v7.app.NotificationCompat.Builder) new android.support.v7.app.NotificationCompat.Builder(context)
+
+        android.support.v4.app.NotificationCompat.Builder builder = (android.support.v4.app.NotificationCompat.Builder) new android.support.v4.app.NotificationCompat.Builder(context, notifId.toString())
                 .setSmallIcon(R.drawable.ic_alarm_black_24dp)
                 .setContentTitle(Title)
                 .setContentText(Message)
@@ -88,5 +89,23 @@ public class AlarmReceiver extends BroadcastReceiver {
         alarmManager.cancel(pendingIntent);
     }
 
+    public  void setRepeatTime(Context context , String type , String time , String message){
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context,AlarmReceiver.class);
+        intent.putExtra(EXTRA_TYPE,type);
+        intent.putExtra(EXTRA_MESSAGE,message);
+        String timeArray[] = time.split(":");
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.HOUR_OF_DAY,Integer.parseInt(timeArray[0]));
+        calendar.set(Calendar.MINUTE,Integer.parseInt(timeArray[1]));
+        calendar.set(Calendar.SECOND, 0);
+        int requestCode = NOTIF_ID_REPEATING;
+
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context,requestCode,intent,0);
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pendingIntent);
+
+        Toast.makeText(context, "Repeating alarm set up", Toast.LENGTH_SHORT).show();
+    }
 
 }
